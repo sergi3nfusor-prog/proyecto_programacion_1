@@ -68,6 +68,25 @@
                 }
             }, 800);
         });
+
+        // Scroll Reveal Activation
+        document.addEventListener("DOMContentLoaded", () => {
+            const reveals = document.querySelectorAll('.reveal, .glass, .hero');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            reveals.forEach(el => {
+                if(!el.classList.contains('reveal')) {
+                    el.classList.add('reveal');
+                }
+                observer.observe(el);
+            });
+        });
     </script>
 </body>
 </html>

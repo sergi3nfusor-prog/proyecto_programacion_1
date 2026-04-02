@@ -451,3 +451,158 @@ main {
   box-shadow: 0 0 15px rgba(255, 75, 43, 0.8), 0 0 30px rgba(255, 75, 43, 0.5);
   transform: scale(1.05);
 }
+
+/* Tipografía Premium - Degradado en Títulos */
+h2 {
+  background: linear-gradient(to right, #FFFFFF, #A0A0A0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Efecto Reflejo en Sedes */
+.sede-reflejo {
+  -webkit-box-reflect: below 2px linear-gradient(transparent, transparent 70%, rgba(255,255,255,0.2));
+}
+
+/* Shimmer Animation para Botón de Contacto */
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-20deg);
+  animation: shimmerAnim 3s infinite;
+}
+
+@keyframes shimmerAnim {
+  0% { left: -100%; }
+  20% { left: 200%; }
+  100% { left: 200%; }
+}
+
+/* Banner de Colección de Lujo */
+.luxury-banner {
+  background: rgba(0, 255, 163, 0.05);
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 0 25px rgba(0, 255, 163, 0.2);
+  padding: 4rem;
+  border-radius: 30px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.luxury-banner h3 {
+  font-size: 2rem;
+  color: var(--accent-color);
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.countdown-box {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-family: monospace;
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 3rem;
+  text-shadow: 0 0 10px rgba(0, 255, 163, 0.5);
+}
+
+/* Toque Extra de Lujo - Glassmorphism Global */
+.glass {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Scroll Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animación de Pulso para Logo */
+.brand-logo img {
+  height: 40px;
+  animation: logoBreath 4s infinite ease-in-out;
+}
+
+@keyframes logoBreath {
+  0%, 100% { filter: drop-shadow(0 0 8px var(--accent-color)); }
+  50% { filter: drop-shadow(0 0 25px var(--accent-color)); }
+}
+
+/* VIP Cards */
+.vip-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.vip-card:hover {
+  transform: translateY(-8px);
+}
+
+.vip-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-20deg);
+  transition: 0s;
+}
+
+.vip-card:hover::after {
+  animation: shine 1s;
+}
+
+@keyframes shine {
+  100% { left: 200%; }
+}
+
+/* Metallic Gradients for VIPs */
+.vip-platino {
+  background: linear-gradient(135deg, rgba(229,228,226,0.1), rgba(180,180,180,0.2)) !important;
+  border: 1px solid #E5E4E2 !important;
+  box-shadow: 0 0 15px rgba(229,228,226,0.3);
+}
+
+.vip-oro {
+  background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(184,134,11,0.2)) !important;
+  border: 1px solid #FFD700 !important;
+  box-shadow: 0 0 15px rgba(255,215,0,0.3);
+}
+
+.vip-plata {
+  background: linear-gradient(135deg, rgba(192,192,192,0.1), rgba(128,128,128,0.2)) !important;
+  border: 1px solid #C0C0C0 !important;
+  box-shadow: 0 0 15px rgba(192,192,192,0.3);
+}
+
+.vip-bronce {
+  background: linear-gradient(135deg, rgba(205,127,50,0.1), rgba(139,69,19,0.2)) !important;
+  border: 1px solid #CD7F32 !important;
+  box-shadow: 0 0 15px rgba(205,127,50,0.3);
+}
