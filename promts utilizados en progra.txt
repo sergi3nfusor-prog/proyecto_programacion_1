@@ -1,0 +1,433 @@
+promts utilizados en progra
+promt 1
+🚀 PROMPT UNIVERSAL V3.0: SISTEMA FULL-STACK PREMIUM
+📋 INSTRUCCIONES INICIALES PARA LA IA
+Antes de generar el código o las imágenes, DETENTE. Necesito que respondas estas 5 PREGUNTAS de configuración técnica:
+
+❓ PREGUNTA 1: Identidad del Negocio
+Nombre del negocio:
+Tagline (1 línea):
+Propuesta de valor:
+
+❓ PREGUNTA 2: Estilo Visual y Color
+Color de acento principal (HEX):
+Sector: (Ej: Sport/Tech)
+Estética: Dark Luxury (Modo oscuro premium con Glassmorphism)
+
+❓ PREGUNTA 3: Estructura del Sitio (Multi-página)
+Páginas a generar (Templates):
+
+index.html (Inicio/Quiénes somos)
+
+productos.html (Catálogo dinámico)
+
+club.html (Membresías y Fidelización)
+
+ofertas.html (Promociones vigentes)
+
+sedes.html (Sucursales y Contacto)
+
+❓ PREGUNTA 4: Mapeo de Base de Datos (SQL)
+Script de creación: (Pega aquí tus CREATE TABLE)
+Motor: PostgreSQL
+
+❓ PREGUNTA 5: Configuración de Conexión (Python/Flask)
+DB_NAME:
+DB_USER:
+DB_PASSWORD:
+DB_HOST:
+DB_PORT:
+
+🎨 FASE 1: GENERACIÓN DE ACTIVOS (IA IMAGES)
+⚡ IMPORTANTE: Tan pronto como responda, genera las imágenes en este orden:
+
+LOGO (logo.png): Minimalista, color de acento, fondo transparente.
+
+HERO VISUAL (hero_visual.png): 3D Abstracto deportivo, estética dark premium.
+
+IMÁGENES DE PRODUCTOS (6 imágenes): Basadas en las marcas de la tabla producto (ej: Nike, Adidas, Puma). Estilo cinematográfico.
+
+IMÁGENES DE SEDES (sede_1.png): Edificios modernos o interiores de tiendas tech-sport.
+
+💻 FASE 2: GENERACIÓN DE ARQUITECTURA DE SOFTWARE
+Una vez generadas las imágenes, genera el código siguiendo esta ESTRUCTURA DE CARPETAS:
+
+1️⃣ ARCHIVO: app.py (Backend Flask)
+Configura la conexión a PostgreSQL usando psycopg2 y los datos de la Pregunta 5.
+
+Crea las rutas @app.route para las 5 páginas.
+
+Lógica de Datos: Realiza queries SELECT a las tablas correspondientes:
+
+/productos: Trae datos de producto, categoria e inventario.
+
+/club: Trae datos de programaFidelizacion.
+
+/ofertas: Trae datos de promocion.
+
+/sedes: Trae datos de sucursal.
+
+2️⃣ ARCHIVO: static/css/styles.css (Global Design)
+Implementa el sistema de variables CSS con el color de acento.
+
+Estilos de Glassmorphism para las cards de productos.
+
+Animaciones de Flip Cards para los productos.
+
+Sistema de Partículas flotantes para el fondo.
+
+Responsive design completo (Mobile First).
+
+3️⃣ ARCHIVO: templates/layout.html (Base Template)
+Contiene el Navbar Premium con enlaces dinámicos url_for.
+
+Footer corporativo completo.
+
+Importación de fuentes (Plus Jakarta Sans) y Scripts globales.
+
+4️⃣ ARCHIVOS: templates/[páginas].html
+Cada página debe heredar de layout.html.
+
+Lógica Jinja2: Usa bucles {% for ... %} para renderizar los datos que vienen de la base de datos.
+
+Alertas de Stock: Si stockActual < 5, añade un badge de "Últimas Unidades" con glow.
+
+✨ ESPECIFICACIONES TÉCNICAS "WOW"
+Flip Cards Dinámicas: En productos.html, la cara frontal muestra la imagen generada por IA y el precio; la cara trasera muestra material, talla y stock.
+
+Contadores Animados: En el inicio, usa JS para animar el conteo de clientes (SELECT COUNT(*) FROM cliente).
+
+Glow Interaction: El cursor debe dejar un rastro de luz del color de acento sobre las glass-cards.
+
+Filtros SQL: Los productos deben aparecer ordenados por fechaIngreso descendente (Novedades).
+
+🎯 ENTREGA FINAL REQUERIDA:
+Carpeta /images con todos los activos generados.
+
+Código completo de app.py.
+
+Código de styles.css.
+
+Los 5 archivos .html listos para ser servidos por Flask.
+
+Archivo README.md con instrucciones para correr el servidor.
+
+🚀 ¡IA, RESPONDE LAS 5 PREGUNTAS Y ESPERA MI CONFIRMACIÓN PARA EMPEZAR!
+
+promt 2 cuestionario guía
+🚀 Prompt de Integración Profesional para Cursor
+Actúa como Senior Full-Stack Developer. >
+Misión: Integrar un formulario de contacto funcional en mi proyecto Sport Zone conectándolo a PostgreSQL.
+
+Instrucciones:
+
+HTML: Toma como referencia mi archivo de ejemplo de formularios y añade una sección de contacto al final de index.html (dentro del bloque de contenido, antes del footer). Debe mantener el estilo neón y las clases .glass que ya usamos.
+
+Python (Backend): Basándote en mi código de ejemplo con las funciones de base de datos, añade una ruta @app.route('/contacto', methods=['POST']) en app.py.
+
+Base de Datos: Configura la inserción de datos para que apunte específicamente a la tabla mensajes_contacto de mi base de datos PostgreSQL.
+
+Campos: El formulario debe capturar: nombre, correo, asunto y mensaje.
+
+CSS: Asegúrate de que los campos input y textarea tengan bordes con brillo verde neón y fondo semitransparente.
+
+Archivos a modificar: index.html, app.py, styles.css.
+Restricción: No elimines ninguna de mis rutas actuales de productos, sedes o lógica de Jinja2 existente.
+
+tercer promt
+
+🔥 Prompt Maestro para Cursor (Antigravity)
+Copia y pega esto en el Composer (Ctrl + I) asegurándote de incluir @index.html, @app.py, @static/css/styles.css y el nuevo @mensajes.html:
+
+Misión: Expandir Sport Zone con una sección "Sobre Nosotros", una imagen hero 3D y un sistema de gestión de mensajes.
+
+1. Generación de Imagen y Hero Section:
+
+Utiliza tus capacidades de generación de imágenes para crear una imagen 3D atractiva que represente una tienda de deportes de lujo (estética futurista, neones verdes, minimalista).
+
+Guarda la imagen en static/images/hero-3d.png.
+
+En index.html, modifica la sección hero para que sea un layout de dos columnas: a la izquierda el texto actual y a la derecha la nueva imagen 3D con un efecto de flotación sutil en CSS.
+
+2. Sección Sobre Nosotros:
+
+Añade después del Hero una sección <section id="sobre-nosotros">.
+
+Redacta un mensaje largo y profesional (3 párrafos) sobre la filosofía de Sport Zone: calidad premium, tecnología de vanguardia en telas y compromiso con el alto rendimiento. Usa el estilo "Dark Luxury" con tipografía "Plus Jakarta Sans".
+
+3. Flujo del Formulario y Gestión de Mensajes:
+
+Modifica el formulario de contacto para que, al enviarse con éxito, el servidor haga un redirect a la ruta /mensajes.
+
+En app.py, crea la ruta @app.route('/mensajes') que consulte todos los registros de la tabla mensajes_contacto y los pase al archivo mensajes.html.
+
+Implementa también la ruta @app.route('/eliminar/<int:id>', methods=['POST']) para borrar mensajes.
+
+4. Diseño de mensajes.html:
+
+Modifica mensajes.html para que herede de layout.html ({% extends 'layout.html' %}).
+
+Asegúrate de que la tabla de mensajes use el estilo .glass y que los botones btn-eliminar tengan un brillo neón rojo para diferenciar la acción de borrar.
+
+Restricción: Mantén el degradado de fondo azul profundo y el rastro verde del cursor en todas las vistas.
+
+
+cuarto promt
+
+🚀 Prompt Maestro Optimizado (Versión con Eliminación)
+Copia y pega esto en el Composer (Ctrl + I) incluyendo estos archivos: @index.html, @app.py, @static/css/styles.css, @layout.html y @mensajes.html.
+
+Misión: Evolucionar Sport Zone con una sección "Sobre Nosotros", Hero 3D y sistema CRUD de mensajes.
+
+1. Identidad Visual (Hero 3D & Sobre Nosotros):
+
+Imagen: Genera una imagen 3D de alta calidad (estética Dark Luxury, tienda deportiva futurista, neones verdes) y guárdala como static/images/hero-3d.png.
+
+Hero: En index.html, divide la sección Hero en dos columnas. Izquierda: Texto actual. Derecha: La nueva imagen 3D con una animación CSS de levitación suave (@keyframes float).
+
+Sobre Nosotros: Inserta una <section id="sobre-nosotros"> con 3 párrafos profesionales que hablen sobre la exclusividad, telas de alta tecnología y el rendimiento élite de Sport Zone.
+
+2. Backend y Gestión de Datos (Lógica de Python):
+
+Ruta Contacto: Modifica @app.route('/contacto') para que, tras el INSERT, haga un redirect(url_for('ver_mensajes')).
+
+Ruta Ver Mensajes: Asegúrate de que @app.route('/mensajes') use get_db_connection() para obtener todos los registros de mensajes_contacto.
+
+Ruta Eliminar: Implementa la función @app.route('/eliminar/<int:id>', methods=['POST']). Debe usar la conexión actual para ejecutar DELETE FROM mensajes_contacto WHERE id = ? y luego redirigir a la tabla.
+
+3. Interfaz de Usuario (mensajes.html):
+
+Haz que mensajes.html herede de layout.html.
+
+La tabla debe tener clase .glass.
+
+Botón Eliminar: El botón dentro del formulario de eliminación debe tener la clase .btn-eliminar. Define en CSS un estilo neón rojo (#ff4b2b) para este botón con box-shadow intenso al hacer hover.
+
+4. Consistencia Técnica:
+
+Mantén el degradado azul profundo y el rastro verde del cursor.
+
+Corrige cualquier error de sintaxis en el bloque de scripts de index.html (comillas en variables de Jinja2).
+
+No elimines las rutas existentes de cursos, sedes o configuración.
+
+quinto promt
+
+
+🔥 Prompt Maestro: Luxury Aesthetic Update para Sport Zone
+Misión: Transformar la estética actual de Sport Zone a una interfaz premium "Dark Luxury" inspirada en marcas de alta tecnología y moda deportiva de lujo.
+
+1. Revestimiento del Fondo y Rastro del Cursor (styles.css):
+
+Modifica el rastro del cursor de puntos a un rastro de luz difusa y elegante (un glow verde esmeralda suave) con un ligero efecto de blur.
+
+Añade una textura de malla geométrica muy sutil sobre el fondo azul profundo para darle profundidad y un aspecto tecnológico.
+
+2. Espaciado y Tipografía (index.html, styles.css):
+
+Utiliza la fuente 'Plus Jakarta Sans' de Google Fonts.
+
+Aumenta significativamente el padding alrededor de la sección Hero para que respire.
+
+Haz el título principal ("Ropa deportiva...") más grande y con un peso de fuente mayor (bold). Los textos secundarios deben ser un tono de gris oscuro sutil.
+
+3. Botón y Componentes (styles.css):
+
+Añade transiciones suaves (0.3s ease-in-out) al botón "Explorar Catálogo" para que tenga un efecto de iluminación suave (box-shadow neon) al pasar el mouse.
+
+Dale un poco más de separación (margin-top) al bloque del botón y contador.
+
+4. Micro-Interacciones (Efectos Hover en styles.css):
+
+Añade un efecto de "levitación suave" (transform: translateY) a las tarjetas de productos y sedes cuando se pase el mouse.
+
+Asegúrate de que la parte trasera de las tarjetas de giro (Flip Cards) tenga un padding generoso para que los datos técnicos no se vean amontonados.
+
+
+
+
+sexto promt
+
+
+🚀 El Prompt Maestro Final
+Copia y pega este bloque completo en el Composer (Ctrl + I) asegurándote de llamar a @styles.css, @index.html, @layout.html y @app.py:
+
+Misión: Final Luxury Polish & UX Enhancement
+
+Sección Promociones (index.html & styles.css): Si la lista de ofertas está vacía, reemplaza el texto plano por un Banner de Próxima Colección de lujo. Debe tener:
+
+Un borde de cristal con neón esmeralda.
+
+Texto: "Próximamente: Colección de Verano 2026".
+
+Un contador regresivo estético (00d : 00h : 00m : 00s) con tipografía monoespaciada.
+
+Un botón elegante que diga "Notificarme al Lanzamiento".
+
+Efecto Reflejo en Sedes (styles.css): Añade un efecto de reflejo (box-reflection o mediante un pseudo-elemento ::after) en la base de las tarjetas de las sedes para que parezcan apoyadas sobre un suelo de mármol oscuro.
+
+Botón de Contacto "Shimmer" (styles.css): Crea una animación @keyframes para el botón de enviar que haga pasar un destello de luz blanca diagonal de izquierda a derecha cada 3 segundos.
+
+Tipografía Premium (styles.css): Aplica un degradado lineal (background-clip: text) a todos los títulos de sección (h2), yendo de blanco puro (#FFFFFF) a un gris plata (#A0A0A0).
+
+Toque Extra de Lujo: Aplica un efecto de Glassmorphism (fondo semi-transparente con 10px de blur) a todas las tarjetas del sitio para que se integren mejor con el fondo degradado y el rastro del cursor.
+
+
+séptimo promt
+
+
+🚀 El Prompt Maestro Final (Incluyendo Membresías)
+Copia y pega este bloque completo en el Composer (Ctrl + I) llamando a @styles.css, @index.html, @layout.html y @app.py:
+
+Misión: Final Luxury Polish & Membership VIP Transformation
+
+Rediseño del Club de Membresía (index.html & styles.css):
+
+Transforma las tarjetas de membresía en Tarjetas VIP. Aplica degradados metálicos sutiles: Platino (#E5E4E2 a #B4B4B4), Oro (#FFD700 a #B8860B), Plata (#C0C0C0 a #808080) y Bronce (#CD7F32 a #8B4513).
+
+Añade un efecto de "Brillo Metálico" (Shine effect) que atraviese la tarjeta cada vez que el usuario pase el mouse.
+
+Inserta un pequeño icono representativo antes del "Nivel" (ej: Diamante para Platino, Estrella para Oro).
+
+Banner de Próxima Colección (Sección Promociones): Si no hay ofertas, crea un Banner de Cristal con borde neón esmeralda que diga "Colección Verano 2026 - Muy Pronto" y un contador estético 00:00:00:00.
+
+Reflejo y Profundidad (styles.css):
+
+Añade el efecto de reflejo en la base de las tarjetas de sedes (image_283788.png).
+
+Aplica un Scroll Reveal suave: las secciones deben entrar con un ligero fade-in y subir 20px al aparecer.
+
+Animación del Logo y Botones:
+
+Haz que el logo de "Sport Zone" tenga una pulsación neón muy lenta (respiración).
+
+El botón de contacto debe tener el destello (shimmer) diagonal constante.
+
+Coherencia Visual: Asegúrate de que todos los títulos tengan el degradado de Blanco a Gris Plata y que se use la fuente 'Plus Jakarta Sans' en todo el sitio.
+
+octavo promt
+
+
+🚀 Prompt de Ejecución Final (El "All-in")
+Copia esto en el Composer (Ctrl + I) con @styles.css, @index.html, @layout.html y @app.py. Este prompt une todo lo que hemos hablado:
+
+Misión: Ultimate Luxury Transformation & Technical Excellence
+
+Club de Membresía VIP: >     * Rediseña las tarjetas para que parezcan de metal cepillado.
+
+Usa clases de CSS para diferenciar: Platino (brillo blanco/azul), Oro (dorado vibrante), Plata (gris metalizado) y Bronce (cobre caliente).
+
+Añade un icono de corona neón que solo aparezca en el nivel Platino y Oro.
+
+Sección de Promociones (The Placeholder): >     * Crea un banner de "Próximamente" con un diseño de reloj de arena neón al lado del contador 00:00:00:00.
+
+El fondo de este banner debe tener una animación de "humo" o neblina verde muy sutil.
+
+Refinamiento UX (User Experience):
+
+Scroll Reveal: Todas las secciones deben aparecer con un efecto de "revelado" (opacidad 0 a 1 y desplazamiento hacia arriba) usando la propiedad intersectionObserver o solo CSS.
+
+Paralaje Suave: Haz que la imagen del Hero (.hero-image) tenga una pequeña transición de movimiento basada en el hover del contenedor principal.
+
+Botones de Acción:
+
+El botón de "Notificarme" y "Enviar Mensaje" debe tener un borde infinito animado (un hilo de luz que recorre el borde del botón).
+
+Optimización de Títulos: >     * Aplica letter-spacing: 2px a los títulos principales y ponlos en uppercase (mayúsculas) para que se vean más como una marca de moda de lujo.
+
+
+noveno promt
+
+
+🚀 Prompt de Pulido "Nivel Dios" (Lo nuevo de verdad)
+Copia esto en el Composer (Ctrl + I) con @styles.css, @index.html, @layout.html y @mensajes.html:
+
+Misión: Final High-End Polish (The Univalle Special)
+
+Tabla de Mensajes (mensajes.html & styles.css):
+
+Añade una animación de entrada tipo "cascada" (staggered animation) para las filas de la tabla. Que cada fila aparezca 0.1s después de la anterior con un efecto de deslizamiento lateral.
+
+Interacción del Cursor (styles.css):
+
+Haz que el rastro verde (glow) se expanda y brille más fuerte momentáneamente cuando el usuario haga click en cualquier parte de la pantalla (efecto pulso).
+
+Tooltips de Lujo (styles.css):
+
+Crea una clase para tooltips personalizados que aparezcan sobre los botones de "Notificarme" y "Eliminar". Deben tener fondo de cristal (glassmorphism) y un borde neón verde muy fino.
+
+Micro-ajuste en el Catálogo:
+
+Añade un efecto de "Zoom Suave" a la imagen del producto cuando la tarjeta se voltea (flip). Que la imagen crezca un 5% para dar sensación de acercamiento.
+
+Footer Premium:
+
+Mejora el pie de página añadiendo un pequeño efecto de "glitch" neón muy sutil al texto de "© 2026 Sport Zone" que ocurra cada 10 segundos.
+
+
+
+decimo promt
+
+
+🚀 Prompt de Evolución Funcional (Lo nuevo de verdad)
+Copia esto en el Composer (Ctrl + I) con @styles.css, @index.html, @layout.html y @app.py:
+
+Misión: Functional Power-Up & Advanced UX
+
+Sistema de Notificaciones (layout.html & styles.css): >    * Crea un contenedor de "Toasts" en la esquina superior derecha.
+
+Diseña una notificación elegante con fondo de cristal, borde verde neón y una pequeña animación de entrada lateral.
+
+Configura para que aparezca cuando el usuario envía el formulario de contacto.
+
+Buscador Inteligente (index.html & styles.css):
+
+Añade un input de búsqueda con un icono de lupa neón arriba del catálogo.
+
+Implementa un script sencillo para filtrar las tarjetas de productos en tiempo real según lo que el usuario escriba (Marca o Categoría).
+
+Efecto de "Carga Inteligente" (Skeletons):
+
+Añade un efecto de "barrido de luz" (shimmer) que pase por las tarjetas antes de que carguen las imágenes de los productos.
+
+Mejora de Navegación (Navbar):
+
+Haz que el Navbar sea "Sticky" (que se quede arriba al bajar) pero que se vuelva un poco más transparente (Glassmorphism) para que no tape el contenido.
+
+Interactividad en el Hero:
+
+Haz que el texto principal tenga un efecto de "Escritura" (Typewriter effect) donde las palabras "Rendimiento", "Estilo" y "Exclusividad" vayan rotando.
+
+
+promt numero 11
+
+Prompt: Power-Up Funcional y UX de Élite
+Misión: Implementación de Lógica de Interfaz Avanzada
+
+Buscador en Tiempo Real (index.html & styles.css):
+
+Añade una barra de búsqueda con estilo Glassmorphism y un icono de lupa neón justo arriba de la sección de productos.
+
+Implementa un script en JavaScript para que, al escribir, se filtren las tarjetas de productos automáticamente (por marca o nombre) sin recargar la página.
+
+Sistema de Notificaciones Toast (layout.html & styles.css):
+
+Crea un contenedor invisible en la esquina superior derecha para mensajes flotantes.
+
+Diseña una notificación "Toast" con fondo oscuro traslúcido, borde verde neón y una animación de entrada suave.
+
+Haz que aparezca un mensaje de "¡Mensaje enviado con éxito!" cuando se use el formulario de contacto.
+
+Sticky Navbar & Glass Effect (layout.html & styles.css):
+
+Haz que el menú de navegación se quede fijo en la parte superior (sticky) al hacer scroll.
+
+Cuando el usuario baje, el fondo del navbar debe volverse un poco más transparente con un efecto de desenfoque (backdrop-filter: blur) para no perder de vista el contenido.
+
+Efecto de Escritura (Hero Section):
+
+En el texto principal del Hero, haz que las palabras "Rendimiento", "Estilo" y "Exclusividad" vayan rotando con un efecto de máquina de escribir (Typewriter effect).
+
+Skeleton Loading (styles.css):
+
+Añade una animación de "barrido de luz" (shimmer) para que las tarjetas tengan un brillo de carga antes de que las imágenes de los productos se visualicen por completo.
