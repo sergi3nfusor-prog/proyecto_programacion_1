@@ -1,9 +1,9 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<section class="hero">
+<section class="hero reveal">
     <div class="hero-content">
-        <h1 class="hero-title">Ropa deportiva<br>de la <span>más alta calidad</span></h1>
+        <h1 class="hero-title">Ropa deportiva<br>de <span class="typewriter-text" id="typewriter">Exclusividad</span></h1>
         <p class="hero-desc">
             Equipamiento deportivo premium y exclusivo que combina alta tecnología con diseño vanguardista (Dark Luxury)
             para atletas que buscan el máximo nivel. Viste el futuro.
@@ -94,5 +94,50 @@
         <button type="submit" class="btn-primary btn-borde-animado" style="width: 100%; margin-top: 1rem; padding: 1rem;">Enviar Mensaje</button>
     </form>
 </section>
+
+<script>
+    const words = ["Rendimiento", "Estilo", "Exclusividad"];
+    let i = 0;
+    let typeTimer;
+    const typeWriterEl = document.getElementById("typewriter");
+
+    function typingEffect() {
+        let word = words[i].split("");
+        var loopTyping = function() {
+            if (word.length > 0) {
+                typeWriterEl.innerHTML += word.shift();
+            } else {
+                setTimeout(deletingEffect, 2000);
+                return false;
+            }
+            typeTimer = setTimeout(loopTyping, 150);
+        };
+        loopTyping();
+    }
+
+    function deletingEffect() {
+        let word = words[i].split("");
+        var loopDeleting = function() {
+            if (word.length > 0) {
+                word.pop();
+                typeWriterEl.innerHTML = word.join("");
+            } else {
+                if (words.length > (i + 1)) {
+                    i++;
+                } else {
+                    i = 0;
+                }
+                setTimeout(typingEffect, 500);
+                return false;
+            }
+            typeTimer = setTimeout(loopDeleting, 100);
+        };
+        loopDeleting();
+    }
+
+    // Inicializar vacio y empezar
+    typeWriterEl.innerHTML = "";
+    typingEffect();
+</script>
 
 {% endblock %}

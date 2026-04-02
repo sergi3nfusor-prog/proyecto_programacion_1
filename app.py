@@ -1,9 +1,11 @@
 import os
-from flask import Flask, render_template, request, redirect, url_for
+import secrets
+from flask import Flask, render_template, request, redirect, url_for, flash
 import psycopg2
 from psycopg2.extras import RealDictCursor
 
 app = Flask(__name__)
+app.secret_key = secrets.token_hex(16)
 
 # Configuración de Conexión
 DB_NAME = "tienda_deportiva"
@@ -136,6 +138,7 @@ def contacto():
     except Exception as e:
         print(f"Error inserting record: {e}")
         
+    flash("¡Mensaje enviado con éxito!", "success")
     return redirect(url_for('ver_mensajes'))
 
 @app.route('/mensajes')

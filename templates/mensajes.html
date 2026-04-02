@@ -18,7 +18,7 @@
             </thead>
             <tbody>
                 {% for m in mensajes %}
-                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <tr class="stagger-row" data-delay="{{ loop.index0 }}" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
                     <td style="padding: 1rem;">{{ m['id'] }}</td>
                     <td style="padding: 1rem;">{{ m['nombre'] }}</td>
                     <td style="padding: 1rem;">{{ m['email'] }}</td>
@@ -26,7 +26,7 @@
                     <td style="padding: 1rem;">{{ m['fecha_envio'] }}</td>
                     <td style="padding: 1rem;">
                         <form action="/eliminar/{{ m['id'] }}" method="POST" style="margin: 0;">
-                            <button type="submit" class="btn-eliminar">Eliminar</button>
+                            <button type="submit" class="btn-eliminar has-tooltip" data-tooltip="Borrar Permanentemente">Eliminar</button>
                         </form>
                     </td>
                 </tr>
@@ -43,4 +43,12 @@
         <a href="{{ url_for('index') }}" class="btn-primary" style="display: inline-block;">Volver a Sport Zone</a>
     </div>
 </section>
+
+<script>
+    // Asignación de animation-delay en JS para evitar alertas del linter CSS
+    document.querySelectorAll('.stagger-row').forEach(row => {
+        const delay = row.getAttribute('data-delay');
+        row.style.animationDelay = `${delay * 0.1}s`;
+    });
+</script>
 {% endblock %}

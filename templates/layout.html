@@ -31,8 +31,8 @@
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="global-footer">
-        <p>&copy; 2026 Sport <span>Zone</span>. Todos los derechos reservados. Estética Dark Luxury.</p>
+    <footer class="global-footer" style="text-align: center; padding: 2rem; border-top: 1px solid var(--glass-border); margin-top: 3rem;">
+        <p><span class="glitch-text" data-text="© 2026 Sport Zone" style="font-weight: 800; color: var(--accent-color);">© 2026 Sport Zone</span>. Todos los derechos reservados. Estética Dark Luxury.</p>
     </footer>
 
     <!-- Glow Interaction Cursor JS -->
@@ -67,6 +67,37 @@
                     document.body.removeChild(cursorGlow);
                 }
             }, 800);
+        });
+
+        // Click Pulse Effect
+        document.body.addEventListener('mousedown', (e) => {
+            const pulse = document.createElement('div');
+            pulse.style.position = 'fixed';
+            pulse.style.left = e.clientX + 'px';
+            pulse.style.top = e.clientY + 'px';
+            pulse.style.width = '100px';
+            pulse.style.height = '100px';
+            pulse.style.background = 'rgba(0, 255, 163, 0.4)';
+            pulse.style.borderRadius = '50%';
+            pulse.style.filter = 'blur(15px)';
+            pulse.style.transform = 'translate(-50%, -50%) scale(0.5)';
+            pulse.style.pointerEvents = 'none';
+            pulse.style.zIndex = '10000';
+            pulse.style.transition = 'transform 0.4s ease-out, opacity 0.4s ease-out';
+            pulse.style.opacity = '1';
+            
+            document.body.appendChild(pulse);
+            
+            setTimeout(() => {
+                pulse.style.transform = 'translate(-50%, -50%) scale(2.5)';
+                pulse.style.opacity = '0';
+            }, 10);
+            
+            setTimeout(() => {
+                if (document.body.contains(pulse)) {
+                    document.body.removeChild(pulse);
+                }
+            }, 400);
         });
 
         // Scroll Reveal Activation
