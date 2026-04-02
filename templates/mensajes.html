@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mensajes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css) }}" />
+</head>
+
+<body>
+    <div class="card wide">
+        <h2>Mensajes guardados</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Mensaje</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for m in mensajes %}
+                <tr>
+                    <td>{{ m['id'] }}</td>
+                    <td>{{ m['nombre'] }}</td>
+                    <td>{{ m['email'] }}</td>
+                    <td>{{ m['mensaje'] }}</td>
+                    <td>{{ m['fecha_envio'] }}</td>
+                    <td>
+                        <form action="/eliminar/{{ m['id'] }}" method="POST">
+                            <button type="submit" class="btn-eliminar">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <br>
+        <a class="link" href="/">Volver a Sport Zone</a>
+    </div>
+</body>
+
+</html>
