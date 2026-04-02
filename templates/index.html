@@ -38,4 +38,29 @@
         }
     }, stepTime);
 </script>
+
+<!-- Contact Section -->
+<section class="contact-section">
+    <h2>Ponte en <span>Contacto</span></h2>
+    <form class="contact-form glass" action="/contacto" method="POST">
+        <div class="form-group">
+            <label for="nombre">Nombre Completo</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+            <label for="correo">Correo Electrónico</label>
+            <input type="email" id="correo" name="correo" required placeholder="tu@correo.com">
+        </div>
+        <div class="form-group">
+            <label for="asunto">Asunto</label>
+            <input type="text" id="asunto" name="asunto" required placeholder="Motivo de tu mensaje (Opcional)">
+        </div>
+        <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" required placeholder="Escribe tu mensaje aquí..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem;">Enviar Mensaje</button>
+    </form>
+</section>
+
 {% endblock %}

@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 import psycopg2
 from psycopg2.extras import RealDictCursor
 
@@ -115,6 +115,28 @@ def sedes():
         sucursales = []
 
     return render_template('sedes.html', sucursales=sucursales)
+
+@app.route('/contacto', methods=['POST'])
+def contacto():
+    nombre = request.form.get('nombre')
+    correo = request.form.get('correo')
+    asunto = request.form.get('asunto')
+    mensaje = request.form.get('mensaje')
+    
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("""
+            INSERT INTO mensajes_contacto (nombre, correo, asunto, mensaje) 
+            VALUES (%s, %s, %s, %s)
+        """, (nombre, correo, asunto, mensaje))
+        conn.commit()
+        cur.close()
+        conn.close()
+    except Exception as e:
+        print(f"Error inserting record: {e}")
+        
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
