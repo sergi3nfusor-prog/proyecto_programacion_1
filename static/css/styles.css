@@ -164,6 +164,8 @@ main {
   letter-spacing: 1px;
   transition: all 0.3s ease-in-out;
   box-shadow: 0 0 15px rgba(0, 255, 163, 0.2);
+  position: relative;
+  z-index: 1;
 }
 
 .btn-primary:hover {
@@ -452,12 +454,59 @@ main {
   transform: scale(1.05);
 }
 
-/* Tipografía Premium - Degradado en Títulos */
+/* Tipografía Premium - Degradado en Títulos y Uppercase */
 h2 {
   background: linear-gradient(to right, #FFFFFF, #A0A0A0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Efecto Hover Paralaje Hero */
+.hero-visual {
+  transition: transform 0.6s ease-out;
+}
+.hero:hover .hero-visual {
+  transform: translateX(-15px) translateY(-10px);
+}
+
+/* Borde Infinito Animado */
+.btn-borde-animado {
+  overflow: hidden;
+  border: none !important;
+}
+
+.btn-borde-animado::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(transparent, transparent, transparent, var(--accent-color));
+  animation: spinBorder 2.5s linear infinite;
+  z-index: -2;
+}
+
+.btn-borde-animado::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: rgba(11, 15, 25, 1);
+  border-radius: 28px;
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.btn-borde-animado:hover::after {
+  background: rgba(0, 255, 163, 0.1);
+}
+
+@keyframes spinBorder {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Efecto Reflejo en Sedes */
@@ -489,9 +538,10 @@ h2 {
   100% { left: 200%; }
 }
 
-/* Banner de Colección de Lujo */
+/* Banner de Colección de Lujo con Neblina Verde */
 .luxury-banner {
-  background: rgba(0, 255, 163, 0.05);
+  background: linear-gradient(45deg, rgba(0, 255, 163, 0.02), rgba(0, 255, 163, 0.15), rgba(11, 15, 25, 0.9));
+  background-size: 300% 300%;
   border: 1px solid var(--accent-color);
   box-shadow: 0 0 25px rgba(0, 255, 163, 0.2);
   padding: 4rem;
@@ -499,6 +549,12 @@ h2 {
   text-align: center;
   position: relative;
   overflow: hidden;
+  animation: smokeMove 8s ease-in-out infinite alternate;
+}
+
+@keyframes smokeMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
 
 .luxury-banner h3 {
@@ -582,27 +638,31 @@ h2 {
   100% { left: 200%; }
 }
 
-/* Metallic Gradients for VIPs */
+/* Metallic Gradients for VIPs (Brushed Metal) */
 .vip-platino {
-  background: linear-gradient(135deg, rgba(229,228,226,0.1), rgba(180,180,180,0.2)) !important;
+  background: repeating-linear-gradient(135deg, rgba(229,228,226,0.15) 0px, rgba(229,228,226,0.15) 2px, transparent 2px, transparent 6px), 
+              linear-gradient(135deg, rgba(200,220,255,0.2), rgba(255,255,255,0.3)) !important;
   border: 1px solid #E5E4E2 !important;
-  box-shadow: 0 0 15px rgba(229,228,226,0.3);
+  box-shadow: 0 0 25px rgba(200,220,255,0.3);
 }
 
 .vip-oro {
-  background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(184,134,11,0.2)) !important;
+  background: repeating-linear-gradient(135deg, rgba(255,215,0,0.15) 0px, rgba(255,215,0,0.15) 2px, transparent 2px, transparent 6px), 
+              linear-gradient(135deg, rgba(255,215,0,0.3), rgba(218,165,32,0.4)) !important;
   border: 1px solid #FFD700 !important;
-  box-shadow: 0 0 15px rgba(255,215,0,0.3);
+  box-shadow: 0 0 25px rgba(255,215,0,0.3);
 }
 
 .vip-plata {
-  background: linear-gradient(135deg, rgba(192,192,192,0.1), rgba(128,128,128,0.2)) !important;
+  background: repeating-linear-gradient(135deg, rgba(192,192,192,0.15) 0px, rgba(192,192,192,0.15) 2px, transparent 2px, transparent 6px), 
+              linear-gradient(135deg, rgba(192,192,192,0.2), rgba(128,128,128,0.3)) !important;
   border: 1px solid #C0C0C0 !important;
-  box-shadow: 0 0 15px rgba(192,192,192,0.3);
+  box-shadow: 0 0 25px rgba(192,192,192,0.3);
 }
 
 .vip-bronce {
-  background: linear-gradient(135deg, rgba(205,127,50,0.1), rgba(139,69,19,0.2)) !important;
+  background: repeating-linear-gradient(135deg, rgba(205,127,50,0.15) 0px, rgba(205,127,50,0.15) 2px, transparent 2px, transparent 6px), 
+              linear-gradient(135deg, rgba(205,127,50,0.2), rgba(139,69,19,0.3)) !important;
   border: 1px solid #CD7F32 !important;
-  box-shadow: 0 0 15px rgba(205,127,50,0.3);
+  box-shadow: 0 0 25px rgba(205,127,50,0.3);
 }
