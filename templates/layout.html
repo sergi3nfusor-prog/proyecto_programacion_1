@@ -37,31 +37,36 @@
 
     <!-- Glow Interaction Cursor JS -->
     <script>
+        // Soft Glow Cursor Effect
         document.body.addEventListener('mousemove', (e) => {
             const cursorGlow = document.createElement('div');
             cursorGlow.style.position = 'fixed';
             cursorGlow.style.left = e.clientX + 'px';
             cursorGlow.style.top = e.clientY + 'px';
-            cursorGlow.style.width = '10px';
-            cursorGlow.style.height = '10px';
-            cursorGlow.style.background = '#00FFA3';
+            cursorGlow.style.width = '50px';
+            cursorGlow.style.height = '50px';
+            cursorGlow.style.background = 'rgba(0, 255, 163, 0.1)';
             cursorGlow.style.borderRadius = '50%';
-            cursorGlow.style.boxShadow = '0 0 20px 10px rgba(0, 255, 163, 0.5)';
+            cursorGlow.style.boxShadow = '0 0 40px 20px rgba(0, 255, 163, 0.2)';
+            cursorGlow.style.filter = 'blur(10px)';
+            cursorGlow.style.transform = 'translate(-50%, -50%)';
             cursorGlow.style.pointerEvents = 'none';
             cursorGlow.style.zIndex = '9999';
-            cursorGlow.style.transition = 'all 0.5s ease-out';
+            cursorGlow.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
             cursorGlow.style.opacity = '1';
             
             document.body.appendChild(cursorGlow);
             
             setTimeout(() => {
                 cursorGlow.style.opacity = '0';
-                cursorGlow.style.transform = 'scale(3)';
+                cursorGlow.style.transform = 'translate(-50%, -50%) scale(2)';
             }, 10);
             
             setTimeout(() => {
-                document.body.removeChild(cursorGlow);
-            }, 500);
+                if (document.body.contains(cursorGlow)) {
+                    document.body.removeChild(cursorGlow);
+                }
+            }, 800);
         });
     </script>
 </body>

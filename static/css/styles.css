@@ -25,8 +25,12 @@ body {
   overflow-x: hidden;
   position: relative;
 
-  /* El degradado profesional que querías */
-  background: linear-gradient(180deg, #050a15 0%, #0d1b35 50%, #162a4d 100%);
+  /* El degradado profesional que querías con malla geométrica sutil */
+  background: 
+    linear-gradient(180deg, rgba(5,10,21,0.95) 0%, rgba(13,27,53,0.95) 50%, rgba(22,42,77,0.95) 100%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
   background-attachment: fixed;
 
   /* Tipografía y color */
@@ -122,6 +126,7 @@ main {
   align-items: center;
   justify-content: space-between;
   min-height: 80vh;
+  padding: 6rem 0;
 }
 
 .hero-content {
@@ -129,9 +134,9 @@ main {
 }
 
 .hero-title {
-  font-size: 4rem;
+  font-size: 5rem;
   line-height: 1.1;
-  font-weight: 800;
+  font-weight: 900;
   margin-bottom: 1.5rem;
 }
 
@@ -140,10 +145,10 @@ main {
 }
 
 .hero-desc {
-  color: var(--text-secondary);
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  line-height: 1.6;
+  color: #8b92a5; /* Tono de gris oscuro sutil */
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
 }
 
 .btn-primary {
@@ -157,21 +162,21 @@ main {
   font-weight: 700;
   font-size: 1.1rem;
   letter-spacing: 1px;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
   box-shadow: 0 0 15px rgba(0, 255, 163, 0.2);
 }
 
 .btn-primary:hover {
   background: var(--accent-color);
   color: var(--bg-color);
-  box-shadow: 0 0 25px rgba(0, 255, 163, 0.6);
-  transform: translateY(-2px);
+  box-shadow: 0 0 35px rgba(0, 255, 163, 0.8);
+  transform: translateY(-3px);
 }
 
 /* Contadores Animados */
 .counter-box {
   display: inline-block;
-  margin-top: 3rem;
+  margin-top: 4.5rem;
   padding: 1rem 2rem;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
@@ -191,6 +196,15 @@ main {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
+}
+
+.glass {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.glass:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
 /* Flip Cards - Productos */
@@ -230,6 +244,11 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.flip-card:hover {
+  transform: translateY(-8px);
 }
 
 .flip-card-front {
@@ -256,6 +275,7 @@ main {
   transform: rotateY(180deg);
   border: 1px solid var(--accent-color);
   box-shadow: 0 0 20px rgba(0, 255, 163, 0.2);
+  padding: 3rem; /* padding generoso para que no se amontone */
 }
 
 .flip-card-back h3 {
