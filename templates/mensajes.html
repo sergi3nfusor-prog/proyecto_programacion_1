@@ -1,49 +1,46 @@
-<!doctype html>
-<html lang="es">
+{% extends 'layout.html' %}
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Mensajes</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css) }}" />
-</head>
+{% block content %}
+<section style="margin-top: 2rem;">
+    <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem; text-align: center;">Mensajes <span>Guardados</span></h2>
 
-<body>
-    <div class="card wide">
-        <h2>Mensajes guardados</h2>
-
-        <table>
+    <div class="glass" style="padding: 2rem; border-radius: 20px; overflow-x: auto;">
+        <table class="glass-table" style="width: 100%; text-align: left; border-collapse: collapse;">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Mensaje</th>
-                    <th>Fecha</th>
-                    <th>Acciones</th>
+                <tr style="border-bottom: 1px solid var(--glass-border);">
+                    <th style="padding: 1rem; color: var(--accent-color);">ID</th>
+                    <th style="padding: 1rem; color: var(--accent-color);">Nombre</th>
+                    <th style="padding: 1rem; color: var(--accent-color);">Email</th>
+                    <th style="padding: 1rem; color: var(--accent-color);">Mensaje</th>
+                    <th style="padding: 1rem; color: var(--accent-color);">Fecha</th>
+                    <th style="padding: 1rem; color: var(--accent-color);">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 {% for m in mensajes %}
-                <tr>
-                    <td>{{ m['id'] }}</td>
-                    <td>{{ m['nombre'] }}</td>
-                    <td>{{ m['email'] }}</td>
-                    <td>{{ m['mensaje'] }}</td>
-                    <td>{{ m['fecha_envio'] }}</td>
-                    <td>
-                        <form action="/eliminar/{{ m['id'] }}" method="POST">
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    <td style="padding: 1rem;">{{ m['id'] }}</td>
+                    <td style="padding: 1rem;">{{ m['nombre'] }}</td>
+                    <td style="padding: 1rem;">{{ m['email'] }}</td>
+                    <td style="padding: 1rem; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ m['mensaje'] }}</td>
+                    <td style="padding: 1rem;">{{ m['fecha_envio'] }}</td>
+                    <td style="padding: 1rem;">
+                        <form action="/eliminar/{{ m['id'] }}" method="POST" style="margin: 0;">
                             <button type="submit" class="btn-eliminar">Eliminar</button>
                         </form>
                     </td>
                 </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6" style="padding: 2rem; text-align: center; color: var(--text-secondary);">No hay mensajes registrados.</td>
+                </tr>
                 {% endfor %}
             </tbody>
         </table>
-
-        <br>
-        <a class="link" href="/">Volver a Sport Zone</a>
     </div>
-</body>
 
-</html>
+    <div style="text-align: center; margin-top: 2rem;">
+        <a href="{{ url_for('index') }}" class="btn-primary" style="display: inline-block;">Volver a Sport Zone</a>
+    </div>
+</section>
+{% endblock %}

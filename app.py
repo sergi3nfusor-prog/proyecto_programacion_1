@@ -136,7 +136,36 @@ def contacto():
     except Exception as e:
         print(f"Error inserting record: {e}")
         
-    return redirect(url_for('index'))
+    return redirect(url_for('ver_mensajes'))
+
+@app.route('/mensajes')
+def ver_mensajes():
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor(cursor_factory=RealDictCursor)
+        cur.execute("SELECT IDMensaje AS id, nombre, correo AS email, mensaje, fecha_envio FROM mensajes_contacto ORDER BY fecha_envio DESC")
+        mensajes = cur.fetchall()
+        cur.close()
+        conn.close()
+    except Exception as e:
+        print(f"Error querying messages: {e}")
+        mensajes = []
+
+    return render_template('mensajes.html', mensajes=mensajes)
+
+@app.route('/eliminar/<int:id>', methods=['POST'])
+def eliminar(id):
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("DELETE FROM mensajes_contacto WHERE IDMensaje = %s", (id,))
+        conn.commit()
+        cur.close()
+        conn.close()
+    except Exception as e:
+        print(f"Error deleting message: {e}")
+
+    return redirect(url_for('ver_mensajes'))
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -5,34 +5,66 @@
     <div class="hero-content">
         <h1 class="hero-title">Ropa deportiva<br>de la <span>más alta calidad</span></h1>
         <p class="hero-desc">
-            Equipamiento deportivo premium y exclusivo que combina alta tecnología con diseño vanguardista (Dark Luxury) para atletas que buscan el máximo nivel. Viste el futuro.
+            Equipamiento deportivo premium y exclusivo que combina alta tecnología con diseño vanguardista (Dark Luxury)
+            para atletas que buscan el máximo nivel. Viste el futuro.
         </p>
         <a href="{{ url_for('productos') }}" class="btn-primary">Explorar Catálogo</a>
-        
+
         <div class="counter-box">
             <div class="counter-num" id="stat-count">0</div>
-            <p style="color: var(--text-secondary); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Productos Disponibles</p>
+            <p style="color: var(--text-secondary); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">
+                Productos Disponibles</p>
         </div>
     </div>
     <div class="hero-visual">
-        <img src="{{ url_for('static', filename='images/hero_visual.png') }}" alt="Hero 3D Abstracto" onerror="this.src='https://via.placeholder.com/500x600/00FFA3/0B0F19?text=Sport+Zone+3D'" style="max-width: 100%; border-radius: 20px; box-shadow: 0 0 50px rgba(0,255,163,0.1);">
+        <img src="{{ url_for('static', filename='images/hero-3d.jpg') }}" alt="Hero 3D Abstracto" class="float-anim"
+            onerror="this.src='https://via.placeholder.com/500x600/00FFA3/0B0F19?text=Sport+Zone+3D'"
+            style="max-width: 100%; border-radius: 20px; box-shadow: 0 0 50px rgba(0,255,163,0.1);">
     </div>
 </section>
+
+<!-- Sobre Nosotros Section -->
+<section id="sobre-nosotros" style="margin-top: 4rem; margin-bottom: 4rem; text-align: center;">
+    <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem;">Sobre <span>Nosotros</span></h2>
+
+    <div class="glass"
+        style="padding: 3rem; border-radius: 20px; text-align: left; line-height: 1.8; color: var(--text-secondary);">
+        <p style="margin-bottom: 1.5rem;">
+            En <strong>Sport Zone</strong> redefinimos el concepto de rendimiento deportivo mediante un enfoque donde la
+            exclusividad y el diseño vanguardista convergen. Nuestra filosofía <em>Dark Luxury</em> no es solo una
+            estética, es una declaración de principios para aquellos atletas que exigen lo mejor y no hacen concesiones
+            en su camino hacia la grandeza.
+        </p>
+        <p style="margin-bottom: 1.5rem;">
+            Utilizamos la más revolucionaria ingeniería textil para brindarte prendas elaboradas con <strong>telas de
+                alta tecnología</strong>. Nuestros materiales de compresión inteligente, termorregulación dinámica y
+            capilarización del sudor están rigurosamente testeados para adaptarse biométricamente a cada uno de tus
+            movimientos, permitiéndote desafiar tus propios límites físicos.
+        </p>
+        <p>
+            Nos impulsa la pasión por el <strong>rendimiento de élite</strong>. Cada detalle de nuestra colección, desde
+            las costuras láser invisibles hasta los acentos neón reflectantes, está meticulosamente diseñado para
+            empoderarte no solo para competir, sino para dominar. Viste la tecnología. Respira el diseño. Haz tuya la
+            victoria con Sport Zone.
+        </p>
+    </div>
+</section>
+
 
 <script>
     // Contador Animado
     let target = Number("{{ total_productos|default(0) }}");
     if (target === 0) target = 154; // Fallback mock en caso de db vacia
-    
+
     let current = 0;
-    const dur = 2000; 
+    const dur = 2000;
     const stepTime = Math.abs(Math.floor(dur / target));
     const counterHTML = document.getElementById("stat-count");
-    
+
     const timer = setInterval(() => {
         current += 1;
         counterHTML.innerHTML = current;
-        if(current >= target) {
+        if (current >= target) {
             clearInterval(timer);
             counterHTML.innerHTML = target + "+";
         }

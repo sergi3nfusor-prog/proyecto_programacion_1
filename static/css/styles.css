@@ -399,3 +399,35 @@ main {
   resize: vertical;
   min-height: 120px;
 }
+
+/* Levitación (hero 3d) */
+.float-anim {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Boton Eliminar Neon */
+.btn-eliminar {
+  background: rgba(255, 75, 43, 0.1);
+  color: #ff4b2b;
+  border: 1px solid #ff4b2b;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px rgba(255, 75, 43, 0.5);
+}
+
+.btn-eliminar:hover {
+  background: #ff4b2b;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255, 75, 43, 0.8), 0 0 30px rgba(255, 75, 43, 0.5);
+  transform: scale(1.05);
+}
