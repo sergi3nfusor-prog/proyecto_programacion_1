@@ -17,14 +17,14 @@
     {% else %}
     <div style="grid-column: 1 / -1;">
         <div class="luxury-banner glass">
-            <h3>Próximamente: Colección de Verano 2026</h3>
+            <h3>Próximamente <span style="color:var(--accent-color); text-shadow: 0 0 10px var(--accent-color);">⏳</span> : Colección de Verano 2026</h3>
             <div class="countdown-box">
                 <span>00d</span> :
                 <span>00h</span> :
                 <span>00m</span> :
                 <span>00s</span>
             </div>
-            <a href="{{ url_for('index') }}#contacto" class="btn-primary">Notificarme al Lanzamiento</a>
+            <a href="{{ url_for('index') }}#contacto" class="btn-primary btn-borde-animado" style="padding: 1rem 3rem;">Notificarme al Lanzamiento</a>
         </div>
     </div>
     {% endfor %}

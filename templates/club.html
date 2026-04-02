@@ -9,19 +9,19 @@
 <div class="glass-container">
     {% for n in niveles %}
     {% set nivel_bajo = n.nivel|lower %}
-    {% set icon = '💎' if 'platino' in nivel_bajo else '⭐' if 'oro' in nivel_bajo else '🥈' if 'plata' in nivel_bajo else '🥉' %}
+    {% set icon = '<span style="text-shadow: 0 0 10px #00FFA3;">👑</span>' if 'platino' in nivel_bajo or 'oro' in nivel_bajo else '🥈' if 'plata' in nivel_bajo else '🥉' %}
     {% set color_class = 'vip-platino' if 'platino' in nivel_bajo else 'vip-oro' if 'oro' in nivel_bajo else 'vip-plata' if 'plata' in nivel_bajo else 'vip-bronce' %}
     
     <div class="glass vip-card reveal {{ color_class }}" style="padding: 2rem; border-radius: 20px; text-align: center; backdrop-filter: blur(10px);">
         <h3 style="color: var(--text-main); font-size: 1.5rem;">Cliente ID: {{ n.IDProgramaFidelizacion }}</h3>
-        <h1 style="color: var(--accent-color); margin: 1rem 0; font-size: 3rem;">{{ n.puntosAcumulados }} PTS</h1>
-        <p style="color: var(--text-secondary); text-transform: uppercase; font-weight: bold; letter-spacing: 2px;">{{ icon }} Nivel: {{ n.nivel }}</p>
+        <h1 style="color: var(--accent-color); margin: 1rem 0; font-size: 3rem; text-shadow: 0 0 10px rgba(0,255,163,0.3);">{{ n.puntosAcumulados }} PTS</h1>
+        <p style="color: var(--text-secondary); text-transform: uppercase; font-weight: bold; letter-spacing: 2px;">{{ icon|safe }} Nivel: {{ n.nivel }}</p>
     </div>
     {% else %}
     <div class="glass vip-card vip-platino reveal" style="padding: 2rem; border-radius: 20px; text-align: center;">
         <h3 style="color: var(--text-main); font-size: 1.5rem;">Cliente ID: VIP-DEMO</h3>
-        <h1 style="color: var(--accent-color); margin: 1rem 0; font-size: 3rem;">15,000 PTS</h1>
-        <p style="color: var(--text-secondary); text-transform: uppercase; font-weight: bold; letter-spacing: 2px;">💎 Nivel: ELITE BLACK</p>
+        <h1 style="color: var(--accent-color); margin: 1rem 0; font-size: 3rem; text-shadow: 0 0 10px rgba(0,255,163,0.3);">15,000 PTS</h1>
+        <p style="color: var(--text-secondary); text-transform: uppercase; font-weight: bold; letter-spacing: 2px;"><span style="text-shadow: 0 0 10px #00FFA3;">👑</span> Nivel: ELITE BLACK</p>
     </div>
     {% endfor %}
 </div>
