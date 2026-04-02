@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div style="text-align: center; margin-bottom: 3rem;">
+    <h2 style="font-size: 2.5rem;">Club de <span>Fidelización</span></h2>
+    <p style="color: var(--text-secondary);">Exclusividad Dark Luxury para nuestros mejores atletas.</p>
+</div>
+
+<div class="glass-container">
+    {% for n in niveles %}
+    <div style="background: var(--glass-bg); padding: 2rem; border-radius: 20px; border: 1px solid var(--glass-border); text-align: center; backdrop-filter: blur(10px);">
+        <h3 style="color: var(--text-main); font-size: 1.5rem;">Cliente ID: {{ n.IDProgramaFidelizacion }}</h3>
+        <h1 style="color: var(--accent-color); margin: 1rem 0; font-size: 3rem;">{{ n.puntosAcumulados }} PTS</h1>
+        <p style="color: var(--text-secondary); text-transform: uppercase; font-weight: bold; letter-spacing: 2px;">Nivel: {{ n.nivel }}</p>
+    </div>
+    {% else %}
+    <div style="background: var(--glass-bg); padding: 2rem; border-radius: 20px; border: 1px solid var(--glass-border); text-align: center;">
+        <h3 style="color: var(--accent-color);">Nivel: ELITE BLACK</h3>
+        <h1 style="margin: 1rem 0;">15,000 PTS</h1>
+        <p style="color: var(--text-secondary);">Ejemplo de membresía sin conexión a BD.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

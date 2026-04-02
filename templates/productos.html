@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div style="text-align: center; margin-bottom: 3rem;">
+    <h2 style="font-size: 2.5rem;">Nuestro <span>Catálogo</span></h2>
+    <p style="color: var(--text-secondary);">Descubre las últimas novedades en tecnología y equipamiento de lujo.</p>
+</div>
+
+<div class="glass-container">
+    {% set placeholder_imgs = [
+        'https://images.unsplash.com/photo-1542291026-7eec264c27ff',
+        'https://images.unsplash.com/photo-1556821840-3a63f95609a7',
+        'https://images.unsplash.com/photo-1608231387042-66d1773070a5'
+    ] %}
+    
+    {% for prod in productos %}
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <!-- Front -->
+            <div class="flip-card-front">
+                <img src="{{ url_for('static', filename='images/producto_' ~ loop.index ~ '.png') }}" 
+                     alt="{{ prod.nombreProducto }}" 
+                     class="product-img" 
+                     onerror="this.src='{{ placeholder_imgs[loop.index0 % 3] }}?auto=format&fit=crop&w=500&q=80'">
+                <h3>{{ prod.nombreProducto }}</h3>
+                <h2 style="color: var(--accent-color); margin-top: 1rem;">${{ prod.precio }}</h2>
+            </div>
+            <!-- Back -->
+            <div class="flip-card-back">
+                <h3>Detalles Técnicos</h3>
+                <p><strong>Marca:</strong> {{ prod.marca }}</p>
+                <p><strong>Material:</strong> {{ prod.material }}</p>
+                <p><strong>Talla:</strong> {{ prod.talla }}</p>
+                <p><strong>Ingreso:</strong> {{ prod.fechaIngreso }}</p>
+                <p style="margin-top: 1rem; color: #fff;">Stock Disponible: <strong>{{ prod.stockActual }}</strong></p>
+                
+                {% if prod.stockActual and prod.stockActual < 5 %}
+                <div class="stock-alert">
+                    ¡Últimas Unidades!
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary);">
+        <h3>Aún no hay productos en la base de datos o fallo en la conexión.</h3>
+        <p>Asegúrate de agregar productos a PostgreSQL.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">Ropa deportiva<br>de la <span>más alta calidad</span></h1>
+        <p class="hero-desc">
+            Equipamiento deportivo premium y exclusivo que combina alta tecnología con diseño vanguardista (Dark Luxury) para atletas que buscan el máximo nivel. Viste el futuro.
+        </p>
+        <a href="{{ url_for('productos') }}" class="btn-primary">Explorar Catálogo</a>
+        
+        <div class="counter-box">
+            <div class="counter-num" id="stat-count">0</div>
+            <p style="color: var(--text-secondary); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Productos Disponibles</p>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <img src="{{ url_for('static', filename='images/hero_visual.png') }}" alt="Hero 3D Abstracto" onerror="this.src='https://via.placeholder.com/500x600/00FFA3/0B0F19?text=Sport+Zone+3D'" style="max-width: 100%; border-radius: 20px; box-shadow: 0 0 50px rgba(0,255,163,0.1);">
+    </div>
+</section>
+
+<script>
+    // Contador Animado
+    let target = Number("{{ total_productos|default(0) }}");
+    if (target === 0) target = 154; // Fallback mock en caso de db vacia
+    
+    let current = 0;
+    const dur = 2000; 
+    const stepTime = Math.abs(Math.floor(dur / target));
+    const counterHTML = document.getElementById("stat-count");
+    
+    const timer = setInterval(() => {
+        current += 1;
+        counterHTML.innerHTML = current;
+        if(current >= target) {
+            clearInterval(timer);
+            counterHTML.innerHTML = target + "+";
+        }
+    }, stepTime);
+</script>
+{% endblock %}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport Zone | Dark Luxury Tech</title>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="particles-bg"></div>
+    
+    <nav class="global-nav">
+        <a href="{{ url_for('index') }}" class="brand-logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Sport Zone Logo" onerror="this.src='https://via.placeholder.com/40x40/00FFA3/0B0F19?text=SZ'">
+            Sport<span>Zone</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('index') }}">Inicio</a></li>
+            <li><a href="{{ url_for('productos') }}">Catálogo</a></li>
+            <li><a href="{{ url_for('club') }}">Club Membresías</a></li>
+            <li><a href="{{ url_for('ofertas') }}">Ofertas</a></li>
+            <li><a href="{{ url_for('sedes') }}">Sedes</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="global-footer">
+        <p>&copy; 2026 Sport <span>Zone</span>. Todos los derechos reservados. Estética Dark Luxury.</p>
+    </footer>
+
+    <!-- Glow Interaction Cursor JS -->
+    <script>
+        document.body.addEventListener('mousemove', (e) => {
+            const cursorGlow = document.createElement('div');
+            cursorGlow.style.position = 'fixed';
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+            cursorGlow.style.width = '10px';
+            cursorGlow.style.height = '10px';
+            cursorGlow.style.background = '#00FFA3';
+            cursorGlow.style.borderRadius = '50%';
+            cursorGlow.style.boxShadow = '0 0 20px 10px rgba(0, 255, 163, 0.5)';
+            cursorGlow.style.pointerEvents = 'none';
+            cursorGlow.style.zIndex = '9999';
+            cursorGlow.style.transition = 'all 0.5s ease-out';
+            cursorGlow.style.opacity = '1';
+            
+            document.body.appendChild(cursorGlow);
+            
+            setTimeout(() => {
+                cursorGlow.style.opacity = '0';
+                cursorGlow.style.transform = 'scale(3)';
+            }, 10);
+            
+            setTimeout(() => {
+                document.body.removeChild(cursorGlow);
+            }, 500);
+        });
+    </script>
+</body>
+</html>
